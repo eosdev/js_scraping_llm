@@ -1,14 +1,14 @@
 const { chromium } = require('@playwright/test');
 const { PROXY_URL, PROXY_USERNAME, PROXY_PASSWORD } = require('./config');
 
-async function instancePlaywright(url, useProxy = false) {
+async function scrapePlaywright(url, selector, useProxy = false) {
     const args = [
         "--no-sandbox",
         "--disable-gpu",
         "--disable-dev-shm-usage",
         "--mute-audio",
         "--use-fake-device-for-media-stream",
-        "--start-maximezed",
+        "--start-maximized",
         "--disable-setuid-sandbox",
         "--disable-web-security"
     ];
@@ -16,7 +16,8 @@ async function instancePlaywright(url, useProxy = false) {
     let launchConfig = {
         headless: true,
         args: args,
-        slowMo: 60
+        slowMo: 60,
+        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
     };
 
     if (useProxy) {
@@ -32,19 +33,25 @@ async function instancePlaywright(url, useProxy = false) {
         timeout: 60000 // Aumenta o timeout padrão para 60 segundos
     });
     const page = await context.newPage({
-        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
+        //userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
     });
-
     const response = await page.goto(url);
     
-    await page.waitForTimeout(15000);
+    // Aguarda um tempo para garantir que a página carregou completamente
+    await page.waitForTimeout(3000);
 
-    const html = await page.content();
+    // Filtra elemento HTML
+    const elementHandle = await page.evaluateHandle(selector => {
+        const element = document.querySelector(selector);
+        return element ? element.innerHTML : '';
+    }, selector);
+
+    const results = await elementHandle.jsonValue();
+    //console.log(results);
+    //const html = await page.content();
     const code = response.status();
 
-    //await page.screenshot({ path: 'screenshot.png' });
-
-    return { "browser": browser, "page": page, "code": code, "html": html };
+    return { "browser": browser, "page": page, "code": code, "html": results };
 }
 
-module.exports = instancePlaywright;
+module.exports = scrapePlaywright;
