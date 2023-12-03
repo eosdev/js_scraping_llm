@@ -6,5 +6,5 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 *.env
-*package-lock.json
-*playwright.config.js
+/js_scraping_llm/package-lock.json
+/js_scraping_llm/playwright.config.js
