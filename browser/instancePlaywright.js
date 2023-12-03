@@ -1,7 +1,7 @@
 const { chromium } = require('@playwright/test');
 const { PROXY_URL, PROXY_USERNAME, PROXY_PASSWORD } = require('./config');
 
-async function scrapePlaywright(url, selector, useProxy = false) {
+async function scrapePlaywright(url, useProxy = false) {
     const args = [
         "--no-sandbox",
         "--disable-gpu",
@@ -41,17 +41,17 @@ async function scrapePlaywright(url, selector, useProxy = false) {
     await page.waitForTimeout(3000);
 
     // Filtra elemento HTML
-    const elementHandle = await page.evaluateHandle(selector => {
-        const element = document.querySelector(selector);
-        return element ? element.innerHTML : '';
-    }, selector);
+    // const elementHandle = await page.evaluateHandle(selector => {
+    //     const element = document.querySelector(selector);
+    //     return element ? element.innerHTML : '';
+    // }, selector);
 
-    const results = await elementHandle.jsonValue();
+    // const results = await elementHandle.jsonValue();
     //console.log(results);
     //const html = await page.content();
     const code = response.status();
 
-    return { "browser": browser, "page": page, "code": code, "html": results };
+    return { "browser": browser, "page": page, "code": code, "html": response };
 }
 
 module.exports = scrapePlaywright;

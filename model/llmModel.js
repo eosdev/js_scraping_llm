@@ -19,11 +19,14 @@ async function extract(content) {
   try {
       const chain = createExtractionChainFromZod(schema, llm);  // Esquema zSchema
       const result = await chain.run(content);
-      console.log(result);
+      //console.log(result);
+      return result
   } catch (error) {
     console.error("Error running chain:", error);
   }
 }
 
 // Chamando a função extract
-extract(`Alex is 5 feet tall. Claudia is 4 feet taller than Alex and jumps higher than him. Claudia is a brunette and Alex is blonde. Alex's dog Frosty is a labrador and likes to play hide and seek.`);
+//extract(`Alex is 5 feet tall. Claudia is 4 feet taller than Alex and jumps higher than him. Claudia is a brunette and Alex is blonde. Alex's dog Frosty is a labrador and likes to play hide and seek.`);
+
+module.exports = extract;

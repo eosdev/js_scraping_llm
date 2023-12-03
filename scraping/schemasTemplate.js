@@ -5,11 +5,11 @@ class zSchema {
     //classe que define o construtor
     constructor () {
         this.schema = z.object({
-            "person-name": z.string().optional(),
-            "person-age":z.number().optional(),
-            "person-hair_color":z.string().optional(),
-            "dog-name":z.string().optional(),
-            "dog-brred":z.string().optional(),
+            "product_name": z.string().optional(),
+            "product_current_price":z.string().optional(),
+            "product_previous_price":z.string().optional(),
+            "image_url":z.string().optional(),
+            "product_sku":z.string().optional(),
         })
     }
 
