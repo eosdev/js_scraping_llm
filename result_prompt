@@ -1,0 +1,42 @@
+
+Prompt Result: [
+  {
+    product_name: 'A Light in the Attic',
+    product_current_price: '£51.77',
+    product_previous_price: '£51.77',
+    image_url: '../../media/cache/fe/72/fe72f0532301ec28892ae79a629a293c.jpg',
+    product_sku: 'a897fe39b1053632'
+  }
+]
+
+
+Prompt Result: [
+  {
+    product_name: 'Lava & Seca 11 Kg Samsung 3 em 1 Inox Look com 12 Programas de Lavagem - WD11M4473PX',
+    product_current_price: 'R$ 4.199,90',
+    product_previous_price: 'R$ 6.254,00',
+    image_url: 'https://www.fastshop.com.br//wcsstore/FastShopCAS/imagens/_LB_LinhaBranca/SGWD11M4473PX/V2/SGWD11M4473PX_PRD_447_1.jpg',
+    product_sku: 'SGWD11M4473PX_PRD'
+      }
+]
+
+
+Prompt Result: [
+  {
+    product_name: 'camiseta patch rsv jeans',
+    product_current_price: 'R$ 139,00',
+    product_previous_price: 'R$ 199,00',
+    image_url: 'https://lojausereserva.vtexassets.com/assets/vtex/assets-builder/lojausereserva.lojausereserva-theme/6.0.681/icons/icon-share___6ba3b6aa02d4dcc5d9a23ea7e997fc54.svg',
+    product_sku: '0078471407'
+  }
+]
+
+Prompt Result: [
+  {
+    product_name: 'Garrafa T\\u00e9rmica Flip Straw Stanley Saffron | 651ML',
+    product_current_price: 'R$ 269,00',
+    product_previous_price: null,
+    image_url: 'https://stanley.fbitsstatic.net/img/p/garrafa-termica-flip-straw-stanley-saffron-651ml-98506/285286-13.jpg?w=495&h=500&v=no-value',
+    product_sku: '08088'
+  }
+]

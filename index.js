@@ -9,14 +9,13 @@ const { OpenAI } = require('openai');
 const openai = new OpenAI({ key: process.env.OPENAI_API_KEY });
 
 
-async function getHTML(url) {
+async function getHTML(url, selector) {
     //Funcao que vai realizar a leitura do HTML
 
     const instance  = await instancePlaywright(url, false);
     const response = await instance.page.content()
     
     // Filtra elemento HTML
-    const selector = '#default > div > div > div.content' 
     const elementHandle = await instance.page.evaluateHandle(selector => {
         const element = document.querySelector(selector);
         return element ? element.innerHTML : '';
@@ -35,9 +34,9 @@ async function getHTML(url) {
 
 
 
-async function processURL(url) {
+async function processURL(url, selector) {
     // Obtem o HTML da URL
-    const html = await getHTML(url);
+    const html = await getHTML(url, selector);
 
     // Usa o HTML obtido para fazer o prompt
     const promptResult = await extract(html);
@@ -46,10 +45,9 @@ async function processURL(url) {
 }
 
 
-//processURL('https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html');
 
-
-const url = 'https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html';
-processURL(url).then(result => {
+const selector = "#product-view-div-98506 > div.info__details"
+const url = 'https://www.stanley1913.com.br/produto/garrafa-termica-flip-straw-stanley-saffron-651ml-98506';
+processURL(url, selector).then(result => {
     console.log("Prompt Result:", result);
 });
