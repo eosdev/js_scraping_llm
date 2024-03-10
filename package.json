@@ -1,0 +1,28 @@
+{
+  "name": "js_scraping_llm",
+  "version": "1.0.0",
+  "description": "Repositório destinado aos estudos de LLM aplicados ao web scraping.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eosdev/js_scraping_llm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eosdev/js_scraping_llm/issues"
+  },
+  "homepage": "https://github.com/eosdev/js_scraping_llm#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.10.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.1",
+    "langchain": "^0.0.198",
+    "openai": "^4.20.0"
+  }
+}
